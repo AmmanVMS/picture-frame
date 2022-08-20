@@ -15,7 +15,7 @@ export device="$1"
 sleep 1
 
 ( (
-  if ! [ -d "$SOURCE" ]; then
+  if ! [ -e "$SOURCE" ]; then
     echo "source $SOURCE does not exist"
     exit
   fi
@@ -52,5 +52,6 @@ sleep 1
   echo "Exit code: $?"
 ) 2>&1 ) | tee -a "$log"
 
-cp "$log" "$SOURCE"
-
+if [ -d "$SOURCE" ]; then
+  cp "$log" "$SOURCE"
+fi

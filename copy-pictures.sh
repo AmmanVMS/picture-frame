@@ -26,14 +26,17 @@ sleep 1
     echo "picture frame attached!"
     dir="`mktemp -d`"
     echo "created $dir, mounting $device"
-    mount "/dev/$device" "$dir"
-    echo "copy '$SOURCE' into '$dir'"
-    cp -r "$SOURCE"/* "$dir"
-    echo "copy '$log' into '$dir'"
-    cp "$log" "$dir"
-    echo "unmount '$dir' and sync"
-    umount "$dir"
-    sync
+    if mount "/dev/$device" "$dir"; then
+      echo "copy '$SOURCE' into '$dir'"
+      cp -r "$SOURCE"/* "$dir"
+      echo "copy '$log' into '$dir'"
+      cp "$log" "$dir"
+      echo "unmount '$dir' and sync"
+      umount "$dir"
+      sync
+    else
+      echo "ERROR: could not mount $dev"
+    fi
     # remove only if empty
     # see https://stackoverflow.com/a/23122112/1320237
     echo "removing $dir"

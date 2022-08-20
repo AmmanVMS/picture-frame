@@ -1,1 +1,1 @@
-ACTION=="add", SUBSYSTEM=="usb_device", ATTRS{idVendor}=="1b8e", ATTRS{idProduct}=="0021", OWNER="pi", RUN+="/home/pi/photo-frame/copy-pictures.sh"
+ACTION=="add", ATTRS{idVendor}=="1b8e", ATTRS{idProduct}=="0021", RUN+="/home/pi/picture-frame/copy-pictures.sh %k"

@@ -37,6 +37,7 @@ username  ALL=(ALL) NOPASSWD: /home/pi/picture-frame/00-usb-picture-frame.in
 
 ## Related Work
 
+- debug udev: https://unix.stackexchange.com/questions/461684/udev-rules-not-running
 - https://askubuntu.com/questions/401390/running-a-script-when-connecting-a-usb-device
 
 

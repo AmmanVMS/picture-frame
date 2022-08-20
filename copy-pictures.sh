@@ -11,13 +11,15 @@ export SOURCE="/data/share/phone/picture-frame"
 export log="$0.log"
 export device="$1"
 
-mkdir -p "$SOURCE"
-touch "$SOURCE/picture-frame-recognized"
-
 # for mount
 sleep 1
 
 ( (
+  if ! [ -d "$SOURCE" ]; then
+    echo "source $SOURCE does not exist"
+    exit
+  fi
+  touch "$SOURCE/picture-frame-recognized"
   if ! echo "$device" | grep -qE '^sd[a-z][0-9]$'; then
     echo "ignoring $device"
     exit

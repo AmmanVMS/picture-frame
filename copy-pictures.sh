@@ -9,6 +9,7 @@ export SOURCE="/data/share/phone/picture-frame"
 
 # constants
 export log="$0.log"
+export device="$1"
 
 mkdir -p "$SOURCE"
 touch "$SOURCE/picture-frame-recognized"
@@ -16,18 +17,18 @@ touch "$SOURCE/picture-frame-recognized"
 # for mount
 sleep 1
 
-( ( (
+( (
+  if ! echo "$device" | grep -qE '^sd[a-z][0-9]$'; then
+    echo "ignoring $device"
+    exit
+  fi
+  (
     set -e
     cd "`dirname \"$0\"`"
     echo "$0" "$@"
     # /home/pi/picture-frame/copy-pictures.sh sdc1
-    device="$1"
     date
     echo "picture frame attached!"
-    if ! echo "$dev" | grep -qE '[0-9]$'; then
-      echo "selecting partition 1"
-      device="${device}1"
-    fi
     dir="`mktemp -d`"
     echo "created $dir, mounting $device"
     if mount "/dev/$device" "$dir"; then
@@ -47,7 +48,7 @@ sleep 1
     rmdir "$dir"
   )
   echo "Exit code: $?"
-) 2>&1 ) | tee "$log"
+) 2>&1 ) | tee -a "$log"
 
 cp "$log" "$SOURCE"
 

@@ -24,6 +24,10 @@ sleep 1
     device="$1"
     date
     echo "picture frame attached!"
+    if ! echo "$dev" | grep -qE '[0-9]$'; then
+      echo "selecting partition 1"
+      device="${device}1"
+    fi
     dir="`mktemp -d`"
     echo "created $dir, mounting $device"
     if mount "/dev/$device" "$dir"; then

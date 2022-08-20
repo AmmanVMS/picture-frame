@@ -34,6 +34,10 @@ replacing the "absolute path" as before:
 username  ALL=(ALL) NOPASSWD: /home/pi/picture-frame/00-usb-picture-frame.in
 ```
 
+Then, edit `copy-pictures.sh`:
+```
+export SOURCE="..."
+```
 
 ## Related Work
 

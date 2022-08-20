@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# see https://askubuntu.com/questions/284224/autorun-a-script-after-i-plugged-or-unplugged-a-usb-device
+#
+
+cd "`dirname \"$0\"`"
+
+./copy-pictures.sh &

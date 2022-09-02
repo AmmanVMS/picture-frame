@@ -6,6 +6,8 @@ It has the following purpose:
 When the picture frame is attached, it copies all pictures from a certain
 folder into the storage of the picture frame.
 
+![](https://pix.toot.wales/storage/m/_v2/454898839954469424/3c6c7d1ab-ede048/TeNYFqjxLjWU/w7vT8Q2qt2a8GNSMAR2jkRIgjXzcS9elfSmwHjYo.jpg)
+
 ## Setup
 
 Get the id of the picture frame:
